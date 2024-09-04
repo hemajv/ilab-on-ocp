@@ -44,6 +44,7 @@ def upload_directory_to_s3(local_directory: str, bucket: str, s3_prefix: str) ->
     # region_name='us-east-1'  # Specify the region if needed
     )
 
+    print("Successfully connected to the bucket. Now, trying to upload the files...")
     num_files = 0
     for root, dirs, files in os.walk(local_directory):
         for filename in files:
@@ -126,4 +127,4 @@ def save_hf_model(model_name: str, local_dir: Union[str, Path], s3_model_path: s
 
     return s3_path
 
-save_hf_model(model_name="<hugging-face-model-name",local_dir="<local-path-to-store-model>",s3_model_path="<s3-path-to-upload-model>",replace_if_exists=False)
+save_hf_model(model_name="mistralai/Mistral-7B-Instruct-v0.2",local_dir="./models",s3_model_path="mistral",replace_if_exists=False)
